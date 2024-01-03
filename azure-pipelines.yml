@@ -31,4 +31,5 @@ steps:
     InProgressScanActionType: '2'
     RemediationScanPreference: '2'
     BuildType: 'mvn'
+    BuildCommand: '-DoutputFile=.debricked-maven-dependencies.tgf -DoutputType=tgf clean dependency:tree package'
     PolicyFailAction: '0'
