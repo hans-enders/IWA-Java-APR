@@ -19,4 +19,16 @@ steps:
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
+- task: FortifyOnDemandStatic@8
+  inputs:
+    FortifyProjects: 
+    ReleaseOptions: '0'
+    ReleaseId: 1047595
+    EntitlementSelection: '1'
+    EntitlementPreference: '1'
+    OverrideScanSettings: '2'
+    InProgressScanActionType: '2'
+    RemediationScanPreference: '2'
+    BuildType: 'mvn'
+    PolicyFailAction: '0'
     goals: 'package'
