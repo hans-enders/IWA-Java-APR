@@ -20,13 +20,24 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
 
-# Task to run FOD SAST scan, with Debricked SCA dependency packaging included in the BuildCommand.
+#Task to package dependencies for Debricked Scan on FOD - using Debricked CLI Resolve option.
+- task: CmdLine@2
+  env:
+     #Token not needed for this local Resolve command run.
+     #DEBRICKED_TOKEN: $(DEBRICKED_TOKEN)
+  inputs:
+    script: |
+      curl -L https://github.com/debricked/cli/releases/latest/download/cli_linux_x86_64.tar.gz | tar -xz debricked
+      ./debricked resolve
+  displayName: DeBricked CLI Resolve
+
+# Task to run FOD SAST scan.
 - task: FortifyOnDemandStatic@8
   inputs:
     FortifyProjects: 
     FodConnection: 'FOD-IWA-Java-Hans-app'
     ReleaseOptions: '0'
-    ReleaseId: 1047595
+    ReleaseId: 1051009
     EntitlementSelection: '1'
     EntitlementPreference: '1'
     OverrideScanSettings: '2'
