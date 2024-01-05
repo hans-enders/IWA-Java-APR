@@ -22,7 +22,7 @@ steps:
 
 #Task to package dependencies for Debricked Scan on FOD - using Debricked CLI Resolve option.
 - task: CmdLine@2
-  env:
+  #env:
      #Token not needed for this local Resolve command run.
      #DEBRICKED_TOKEN: $(DEBRICKED_TOKEN)
   inputs:
